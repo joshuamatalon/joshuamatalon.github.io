@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joshua Matalon — finished things in days</title>
+<meta name="description" content="Offline phone apps, decision engines, data extraction, and documents that survive a hostile read. Spec first, tested against known totals, fixed price.">
+<meta property="og:title" content="Joshua Matalon — finished things in days">
+<meta property="og:description" content="Offline phone apps, decision engines, data extraction, and documents that survive a hostile read.">
+<meta property="og:image" content="https://joshuamatalon.github.io/assets/tempo-engine.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b0421a'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,Arial' font-size='18' font-weight='700' text-anchor='middle' fill='white'%3EJM%3C/text%3E%3C/svg%3E">
+<style>
+  :root { --bg:#f7f5f0; --ink:#1a1a1a; --muted:#6b6b6b; --rule:#e3e0da; --card:#ffffff; --accent:#b0421a; --soft:#f3ece3; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141317; --ink:#ece8df; --muted:#a39d92; --rule:#2e2b33; --card:#1d1b22; --accent:#e08a5a; --soft:#2a221d; } }
+  * { box-sizing:border-box; }
+  body { margin:0; overflow-x:hidden; background:var(--bg); color:var(--ink); font:16px/1.55 "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width:1040px; margin:0 auto; padding:56px 24px 80px; overflow-wrap:anywhere; }
+  header { max-width:720px; margin-bottom:56px; }
+  .kicker { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-weight:600; margin:0 0 14px; }
+  h1 { font-size:clamp(34px,5vw,52px); line-height:1.05; letter-spacing:-.02em; font-weight:600; margin:0 0 18px; }
+  .lede { font-size:19px; line-height:1.45; margin:0 0 22px; color:var(--ink); }
+  .lede b { font-weight:600; }
+  .cta { display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; padding:12px 18px; border-radius:8px; }
+  .cta.alt { background:transparent; color:var(--accent); border:1.5px solid var(--accent); margin-left:10px; }
+  h2 { font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; margin:0 0 20px; padding-top:22px; border-top:1px solid var(--rule); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:22px; margin-bottom:60px; }
+  .work { min-width:0; background:var(--card); border:1px solid var(--rule); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+  .work.wide { grid-column:1 / -1; display:grid; grid-template-columns:1.5fr 1fr; }
+  .work.wide .shot { height:100%; }
+  .shot { background:#0f1116; aspect-ratio:16/10; overflow:hidden; display:flex; justify-content:center; align-items:flex-start; }
+  .shot.phone { aspect-ratio:auto; height:260px; }
+  .shot img { width:100%; height:100%; object-fit:cover; object-position:left top; display:block; max-width:100%; }
+  .shot.phone img { width:auto; height:100%; }
+  .meta { min-width:0; padding:18px 20px 20px; display:flex; flex-direction:column; gap:8px; }
+  .meta h3 { margin:0; font-size:19px; font-weight:600; }
+  .meta .what { color:var(--muted); font-size:14.5px; margin:0; }
+  .meta .replaced { font-size:14.5px; margin:0; }
+  .meta .replaced b { font-weight:600; }
+  .meta a.live { color:var(--accent); font-weight:600; text-decoration:none; font-size:14.5px; margin-top:auto; padding-top:8px; }
+  .meta a.live:hover { text-decoration:underline; }
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-bottom:60px; }
+  .step { background:var(--soft); border-radius:12px; padding:18px 20px; }
+  .step .n { color:var(--accent); font-weight:700; font-size:22px; line-height:1; margin-bottom:8px; }
+  .step h3 { margin:0 0 6px; font-size:17px; font-weight:600; }
+  .step p { margin:0; font-size:14.5px; color:var(--ink); }
+  .offers { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px 28px; margin-bottom:60px; }
+  .offer h3 { margin:0 0 4px; font-size:16px; font-weight:600; }
+  .offer p { margin:0; font-size:14.5px; color:var(--muted); }
+  .never { border-left:3px solid var(--accent); padding:4px 0 4px 16px; margin-bottom:60px; max-width:720px; }
+  .never p { margin:0 0 6px; font-size:15px; }
+  footer { border-top:1px solid var(--rule); padding-top:22px; color:var(--muted); font-size:14px; display:flex; flex-wrap:wrap; gap:8px 24px; align-items:center; }
+  footer a { color:var(--accent); text-decoration:none; font-weight:600; }
+  @media (max-width:720px) { .work.wide { grid-template-columns:1fr; } .work.wide .shot { height:auto; aspect-ratio:16/9; } .cta.alt { margin-left:0; margin-top:10px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="kicker">Joshua Matalon · Eastern time, US</p>
+    <h1>I make finished things in days.</h1>
+    <p class="lede">Offline phone apps, decision engines, data extraction, and documents that survive a hostile read. <b>Spec first. Tested against known totals. Fixed price.</b> Everything below shipped and is in use.</p>
+    <a class="cta" href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a>
+    <a class="cta alt" href="#work">See the work</a>
+  </header>
+
+  <h2 id="work">Shipped work</h2>
+  <div class="grid">
+
+    <article class="work wide">
+      <div class="shot"><img src="assets/tempo-engine.jpg" alt="TEMPO auction engine: a player's price built up in seven audited steps"></div>
+      <div class="meta">
+        <h3>TEMPO — live auction engine</h3>
+        <p class="what">A fantasy-football salary-cap draft assistant. Four projection sources, a room model learned from the league's own past auction, a Bayesian update after every sale, and a re-optimised plan for the roster in real time.</p>
+        <p class="replaced"><b>Replaced:</b> a printed cheat sheet and gut feel. Every number on the card can be opened to the seven steps that produced it.</p>
+        <p class="what">Runs locally on the draft night network. Live demo on request.</p>
+      </div>
+    </article>
+
+    <article class="work">
+      <div class="shot phone"><img src="assets/tempo-card.jpg" alt="TEMPO nomination card on a phone: BUY, your number, and the room's price"></div>
+      <div class="meta">
+        <h3>TEMPO on the phone</h3>
+        <p class="what">Type the nominated player, get your number and the walk-away price, enter the sale in three taps. The whole room's money re-solves after each one.</p>
+        <p class="replaced"><b>Replaced:</b> a spreadsheet nobody could update fast enough during a live auction.</p>
+      </div>
+    </article>
+
+    <article class="work">
+      <div class="shot phone"><img src="assets/passchart.jpg" alt="Pass Chart app on a phone"></div>
+      <div class="meta">
+        <h3>Pass Chart</h3>
+        <p class="what">Volleyball serve-receive grading for a whole season. Tap grades live, or photograph the paper sheet and let it read the tally marks. Works with no signal in the gym.</p>
+        <p class="replaced"><b>Replaced:</b> a paper passing sheet and a coach's evening of arithmetic.</p>
+        <a class="live" href="https://joshuamatalon.github.io/passchart/">Open the live app →</a>
+      </div>
+    </article>
+
+    <article class="work">
+      <div class="shot phone"><img src="assets/courtside.jpg" alt="Courtside match tracker on a phone"></div>
+      <div class="meta">
+        <h3>Courtside</h3>
+        <p class="what">Sideline match tracker: score, serve, all six rotations tracking themselves, a full box score, lineups, subs against a per-set limit, and opponent scouting. Installs to the home screen, no account.</p>
+        <p class="replaced"><b>Replaced:</b> a stat sheet and a rotation cheat card. In use by a youth club's coaching staff.</p>
+        <a class="live" href="https://joshuamatalon.github.io/courtside/">Open the live app →</a>
+      </div>
+    </article>
+
+    <article class="work">
+      <div class="shot"><img src="assets/battlebox.jpg" alt="Riftbound Battle Box deck browser"></div>
+      <div class="meta">
+        <h3>Riftbound Battle Box</h3>
+        <p class="what">Twenty-three ready-to-play decks for a new trading card game, browsable by tier and domain, every list checked by a rules verifier for legality, card ownership, and interaction floors. Built for a table of new players.</p>
+        <p class="replaced"><b>Replaced:</b> a binder and an argument about whether a deck was legal.</p>
+        <a class="live" href="https://joshuamatalon.github.io/riftbound-battlebox/">Open the deck browser →</a>
+      </div>
+    </article>
+
+    <article class="work">
+      <div class="shot phone"><img src="assets/coach.jpg" alt="Riftbound Coach trainer on a phone"></div>
+      <div class="meta">
+        <h3>Riftbound Coach</h3>
+        <p class="what">A nine-step trainer that takes someone from zero to ready for any deck in the box. One decision per screen, streak goals so guessing can't pass, real card art. Built so a first-time player never stops on a wall of text.</p>
+        <p class="replaced"><b>Replaced:</b> a forty-page rulebook nobody would read.</p>
+        <a class="live" href="https://joshuamatalon.github.io/riftbound-battlebox/coach.html">Open the trainer →</a>
+      </div>
+    </article>
+  </div>
+
+  <h2>How I work</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Spec first</h3><p>You get a short written spec before anything is built, so we agree on what done looks like while changing it is free.</p></div>
+    <div class="step"><div class="n">2</div><h3>Sample early</h3><p>The first piece lands within a day: a sample tab, a mapped page, a one-page outline. You approve the shape before I finish the rest.</p></div>
+    <div class="step"><div class="n">3</div><h3>Prove it</h3><p>Every deliverable is checked against something real: your control totals, the source page, the rulebook. I say what I could not verify instead of rounding it up.</p></div>
+    <div class="step"><div class="n">4</div><h3>Fixed price</h3><p>One number, agreed up front, with what is included and what is not written down. Changes are priced before they happen.</p></div>
+  </div>
+
+  <h2>What I take on</h2>
+  <div class="offers">
+    <div class="offer"><h3>Spreadsheet and data automation</h3><p>Excel and Google Sheets macros, imports, consolidation, one-click reports. Readable code, no hard-coded paths.</p></div>
+    <div class="offer"><h3>Extraction and clean-up</h3><p>PDFs, Word files, CSVs, and websites into a clean, validated workbook, with a log of everything ambiguous.</p></div>
+    <div class="offer"><h3>Research reports and documents</h3><p>Market research from public datasets with every figure sourced, process documentation, application packages, decks.</p></div>
+    <div class="offer"><h3>Phone-first apps</h3><p>Installable web apps that work offline and need no account. Built to replace a paper sheet, not to impress a store.</p></div>
+    <div class="offer"><h3>Decision engines</h3><p>Models that turn messy data into a number you can act on, with every step of the reasoning visible.</p></div>
+  </div>
+
+  <div class="never">
+    <p><b>What I will not do:</b> let anything automated submit, sign, or send on your behalf without a person checking it. Recommend building what you could buy cheaper. Disappear after delivery. You get documentation and a trained owner.</p>
+  </div>
+
+  <footer>
+    <span>Joshua Matalon</span>
+    <a href="mailto:joshuamatalon@gmail.com">joshuamatalon@gmail.com</a>
+    <a href="https://github.com/joshuamatalon">GitHub</a>
+  </footer>
+</main>
+</body>
+</html>
