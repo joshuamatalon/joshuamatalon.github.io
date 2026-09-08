@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TEMPO — a live draft aid that ran four real drafts · Joshua Matalon</title>
+<meta name="description" content="TEMPO puts one number on every player in a fantasy-football auction or snake draft, opens it into seven auditable steps, and re-solves the roster plan after every sale. Four real drafts in 2026, with the results.">
+<meta property="og:image" content="https://joshuamatalon.github.io/assets/tempo-auction-desk.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b0421a'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,Arial' font-size='18' font-weight='700' text-anchor='middle' fill='white'%3EJM%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
+  <p class="kicker">Decision tool · Python + JavaScript · 2026 season</p>
+  <h1>TEMPO. One number per player, and the reasons behind it, while the clock runs.</h1>
+  <p class="lede">A fantasy-football auction moves about $2,400 across a table in three hours, and you get roughly ten seconds per player to decide whether the room's price is a good one. TEMPO is the tool I built to make that decision for my own leagues, then ran in four real drafts this season: two salary-cap auctions and two snake drafts.</p>
+
+  <div class="facts">
+    <div class="fact"><div class="v">4</div><div class="l">real drafts run, Aug 26 to Sep 7, 2026</div></div>
+    <div class="fact"><div class="v">169 / 170</div><div class="l">sales entered live in the 519 Vets auction, every price and buyer matching Yahoo's official results</div></div>
+    <div class="fact"><div class="v">1st of 12</div><div class="l">where that roster graded at the room's actual prices, 2.2% off the hindsight-best roster</div></div>
+    <div class="fact"><div class="v">$3.10</div><div class="l">mean error between predicted and actual price over 169 sales in a room with no auction history</div></div>
+  </div>
+
+  <h2>The card: what you look at when a player is nominated</h2>
+  <figure class="figure">
+    <img src="assets/tempo-auction-desk.jpg" alt="TEMPO auction screen. Left: Jahmyr Gibbs nominated, BID TO $96, the room will pay about $77. Right: the roster plan projecting first of twelve.">
+    <figcaption>Type the nominated name and the card answers the only question that matters: bid to what? Here the room is expected to pay about $77 for Gibbs and he is worth $96 to this roster, so bid up to $96 and let him go past that. The right column is the plan for the whole roster, re-solved after every sale, with the projected finish against the other eleven teams. Rival teams are labelled generically in this capture.</figcaption>
+  </figure>
+
+  <div class="two">
+    <figure><img src="assets/tempo-auction-card.jpg" alt="The number card: BID TO $96, YOUR NUMBER $96, the room will pay about $77, lands about 52% of the time at a bid of $78."><figcaption>The sentence under the number is generated from the same model, so it always agrees with the number. The small print says how often the plan actually lands him at the bid the plan assumes.</figcaption></figure>
+    <figure><img src="assets/tempo-why.jpg" alt="Why these? Each planned slot shows the obvious upgrade and what it would cost the whole team: Josh Allen instead? −12 pts for the whole team."><figcaption>Every slot in the plan can be challenged. "Why these?" prices the obvious upgrade against the whole team, not the one slot: Josh Allen instead of Caleb Williams costs twelve points across the roster, because the money has to come out of Gibbs.</figcaption></figure>
+  </div>
+
+  <h2>The engine: every price opens into seven steps</h2>
+  <figure class="figure">
+    <img src="assets/tempo-engine.jpg" alt="Engine view for Jahmyr Gibbs: four projection sources, scouting chips capped at a few percent each, the week-by-week schedule, and points turned into a price of $83 fair, $98 to this team.">
+    <figcaption>Nothing on the card is a black box. Step one shows the four independent projections and which one is the starting point. Step two shows the scouting adjustments as capped chips, so no single opinion can swing a price far. Step three is the schedule week by week. Step four turns points over a replacement player into dollars at what a point costs in this room right now. Three more steps below the fold handle the room's remaining money, scarcity at the position, and the endgame.</figcaption>
+  </figure>
+
+  <h2>Snake mode: on the clock, with the plan from here</h2>
+  <figure class="figure">
+    <img src="assets/tempo-snake-desk.jpg" alt="Snake draft view: YOU ARE ON THE CLOCK, pick 3 round 1, three recommendations, then the plan for picks 14, 19, 30 and 35 with the probability each player is still available.">
+    <figcaption>In a snake draft the question is different: who to take now so that the next four turns still work. The three cards are the recommendation; the plan below simulates the other seven managers to your next pick and prints, for each candidate, the chance he is still there. The 55% and 62% tags are the honest ones: those players are the plan's second choices for a reason.</figcaption>
+  </figure>
+
+  <div class="phones">
+    <figure><img src="assets/tempo-phone-card.jpg" alt="The auction card on a phone"><figcaption>On draft night this runs on a phone next to the Yahoo or Sleeper app. Entering a sale is three taps: price, buyer, sold. Undo is one.</figcaption></figure>
+    <figure><img src="assets/tempo-phone-snake.jpg" alt="The snake view on a phone"><figcaption>The snake view on a phone. Picks arrive from the league's public feed on their own; the manual entry box is only a fallback.</figcaption></figure>
+    <figure><img src="assets/tempo-519-result.jpg" alt="The real post-draft roster from the 519 Vets auction: projects first of twelve, plus 36 points over the next team, $200 spent."><figcaption>The real one. This is the 519 Vets tool after the auction on September 7, 2026: fifteen players, $200 spent, projected first of twelve by 36 points at the room's actual prices.</figcaption></figure>
+  </div>
+
+  <div class="proof">
+    <h3>What happened in the actual rooms</h3>
+    <div class="row"><b>519 Vets auction<br><span class="d">Yahoo · 12 teams · $200 · Sep 7</span></b><div>169 of 170 sales entered live, every price and buyer matching the official results; the last $1 pick of the night was added afterwards. Prices ran 3% over the model's predictions with a spread that matched the cross-room prior the risk engine was built on. Roster graded first of twelve at the room's actual prices, 42 points (2.2%) off the best roster money could have bought in hindsight. Two anchors landed at or under their numbers; the rest of the plan came in at $1 to $13.<div class="d">The tool was rebuilt on the morning of the draft after 40 dry runs found it overpricing two anchors and scoring empty roster slots for free. Both are fixed; both are in the post-mortem.</div></div></div>
+    <div class="row"><b>Misfits superflex auction<br><span class="d">Sleeper · 10 teams · Sep 6</span></b><div>No auction history existed for this room, so the market was synthetic: consensus value under superflex replacement, scaled to the room's money, with a Bayesian update as sales landed. 169 of 170 sales arrived from Sleeper's feed. Mean price error $3.10, bias under a dollar. The model overrated quarterbacks by about 12% and underrated receivers, which is recorded for next time.</div></div>
+    <div class="row"><b>Viva guillotine snake<br><span class="d">Sleeper · 8 teams · 2 lives · Sep 5</span></b><div>A guillotine league eliminates the lowest weekly score, so the objective was rebuilt around floor instead of ceiling: half the 25th percentile, half the median, minus replacement, with a durability term from two seasons of games missed. That reordering moved McCaffrey from third to sixth on the board before pick one.</div></div>
+    <div class="row"><b>League 610 snake<br><span class="d">Yahoo · 12 teams · Aug 26</span></b><div>The first live run, from pick one. Market-value grade A-. The retrospective found three real defects: a static opponent model that never updated on what the room was actually doing, a roster-need term too weak against raw value, and need-blind late picks. All three were fixed before the September drafts. The retro is honest because the next draft depended on it.</div></div>
+  </div>
+
+  <div class="prose">
+    <h2>How it is built</h2>
+    <ul>
+      <li>Python engine: four projection sources blended, then a valuation over replacement per position, a Monte Carlo simulation of the other managers, and a re-optimised plan after every sale or pick.</li>
+      <li>The room model for the 519 auction is learned from that room's own 2025 auction, all 180 sales; replaying them reconciles every team to the dollar, and the $1 to $3 tail predicts within sixty cents.</li>
+      <li>Flask server with server-sent events; a single-file JavaScript front end; every sale journaled append-only so a restart rebuilds the state and any entry can be undone.</li>
+      <li>Every number on the card is produced by the same seven-step trace the Engine tab shows. There is no separate display logic to drift.</li>
+      <li>Verification before each draft: scripted dry runs through the live server and page, seeds recorded, invariants checked, then a hindsight grader that scores the final roster against the best roster the room's prices allowed.</li>
+    </ul>
+    <p class="stack">TEMPO runs on the draft-night network and is not a public app. A live demo on a copy of a real room is available on request.</p>
+  </div>
+
+  <div class="next"><a href="courtside.html">Next: Courtside →</a><a href="index.html">All work</a></div>
+</main>
+</body>
+</html>
