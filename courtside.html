@@ -40,14 +40,14 @@
       <li><b>Roster.</b> Names, numbers, positions, and a JSON backup that moves between phones.</li>
     </ul>
 
-    <h2>The part I am proudest of</h2>
+    <h2>Change requests from inside the app</h2>
     <p>The coach can ask for a change from inside the app, in his own words. The request becomes a work item, gets built and tested automatically, the app updates itself on his phone, and the reply comes back to the same screen he typed on. Since August the club's coach has commissioned features this way without messaging me once. The most recent one, an opponent scope on the stats table so he can total every match against the same team, shipped on September 6.</p>
 
     <h2>How it is built</h2>
     <ul>
       <li>One HTML file, vanilla JavaScript, no framework and no build step. It runs from a static host and installs as a progressive web app on iPhone and Android.</li>
       <li>Every tap is written synchronously to local storage and mirrored to IndexedDB, so a crash mid-rally loses nothing and a wiped browser store restores from the mirror. Tested by wiping it.</li>
-      <li>The deployed page ships with a generic roster on purpose. Real names are typed once on the Roster tab and live only on that phone; a public page never carries a team's players.</li>
+      <li>The deployed page ships with a generic roster. Real names are typed once on the Roster tab and live only on that phone; a public page never carries a team's players.</li>
       <li>A browser test suite of one hundred assertions covers the scoring rules, rotation arithmetic, statistics, persistence, and the backup format.</li>
     </ul>
     <p class="stack">Shares its whole design system with <a href="passchart.html">Pass Chart</a>: same palette, type scale, spacing and components, so a coach who knows one knows both.</p>

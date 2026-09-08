@@ -45,7 +45,7 @@
   <div class="walk">
     <h3><span>1</span>Where the projection comes from</h3>
     <p>Four independent forecasts of his season, shown side by side. The best one is the starting point and the others are a cross-check. The first source already scores in this league's own rules. The second is a stat-line projection re-scored into them. The third is where several hundred experts rank him, with how much they disagree. The fourth is where the market actually drafts him. Players no projection covers still get a number, through a points-by-rank curve fitted per position from the players who do.</p>
-    <p>The typical season and the best case are two different numbers on purpose. The gap between them comes from how much the experts disagree about him, converted into points. A player everyone agrees on gets a narrow band; a player the experts split on gets a wide one.</p>
+    <p>The typical season and the best case are two different numbers. The gap between them comes from how much the experts disagree about him, converted into points. A player everyone agrees on gets a narrow band; a player the experts split on gets a wide one.</p>
 
     <h3><span>2</span>What the research adds</h3>
     <p>Each chip is one fact from his research file, turned into a small bounded nudge: an active injury, a new play-caller, the schedule, week-to-week volatility, durability from his age and the games he has missed. No single chip can move him more than a few percent, and the whole layer is capped, because a rules layer confident enough to move a player forty percent would be inventing precision.</p>
@@ -53,7 +53,7 @@
 
     <h3><span>3</span>Who he plays, week by week</h3>
     <p>Every opponent on his schedule, coloured by what that defense allowed to his position slot over the last two seasons, with the facts the engine knows about it: a shadow corner, a new coordinator, a lost starter, a blitz-heavy front. The outlined weeks are the fantasy playoffs, and the best-case number weights them more, because in a league that pays only for first place the ceiling that matters is the ceiling in December.</p>
-    <p>Two honesty rules keep this layer small. Defense quality is noisy year to year, so it is shrunk hard toward average, harder still where the coordinator changed. And a second layer prices the mechanism rather than the outcome: his own offensive line against each week's defensive front, so a bad line facing an elite pass rush compounds and a great line neutralises it.</p>
+    <p>Two rules bound this layer. Defense quality is noisy year to year, so it is shrunk hard toward average, harder still where the coordinator changed. And a second layer prices the mechanism rather than the outcome: his own offensive line against each week's defensive front, so a bad line facing an elite pass rush compounds and a great line neutralises it.</p>
 
     <h3><span>4</span>Turning points into a price</h3>
     <p>His season points are a ceiling-weighted blend of the typical season and the best case, then averaged half and half with the consensus view of him. That half weight was not a taste: dry runs graded both ways chose it. Subtract the points of the last player who would still start at his position, and you have what he adds. Multiply by what a point costs in this room right now, which is the money still on the table divided by the points still available, and you have his fair price. His value to your team is higher than his fair price when your roster needs him more than an average roster would.</p>
@@ -78,7 +78,7 @@
 
   <div class="walk">
     <h3><span>6</span>The most you should pay</h3>
-    <p>This is the step nothing static can do. For each price on the ladder the engine pretends you bought him at that price, rebuilds the best roster you can still afford with what is left, at what each remaining player is predicted to cost, and compares it with the best roster you could build by skipping him. The rebuild is a budget optimisation over your open slots, with kicker, defense and bench held at tail prices plus a cushion. Your number is the highest price at which the roster with him still beats the roster without him. Because the rest of the roster is re-planned at every rung, the number already accounts for the cheaper alternative at his position and for what his money would have bought elsewhere.</p>
+    <p>For each price on the ladder the engine pretends you bought him at that price, rebuilds the best roster you can still afford with what is left, at what each remaining player is predicted to cost, and compares it with the best roster you could build by skipping him. The rebuild is a budget optimisation over your open slots, with kicker, defense and bench held at tail prices plus a cushion. Your number is the highest price at which the roster with him still beats the roster without him. Because the rest of the roster is re-planned at every rung, the number already accounts for the cheaper alternative at his position and for what his money would have bought elsewhere.</p>
     <p>Unspent money is worthless at the end of the night, so when your remaining money exceeds what your plan can spend at predicted prices, every number on your card rises. When it is the reverse, they fall.</p>
 
     <h3><span>7</span>Where everyone stands</h3>
@@ -100,7 +100,7 @@
   <h2>Snake mode: on the clock, with the plan from here</h2>
   <figure class="figure">
     <img src="assets/tempo-snake-desk.jpg" alt="Snake draft view: YOU ARE ON THE CLOCK, pick 3 round 1, three recommendations, then the plan for picks 14, 19, 30 and 35 with the probability each player is still available.">
-    <figcaption>In a snake draft the question is different: who to take now so that the next four turns still work. The three cards are the recommendation; the plan below simulates the other seven managers to your next pick and prints, for each candidate, the chance he is still there. The 55% and 62% tags are the honest ones: those players are the plan's second choices for a reason.</figcaption>
+    <figcaption>In a snake draft the question is different: who to take now so that the next four turns still work. The three cards are the recommendation; the plan below simulates the other seven managers to your next pick and prints, for each candidate, the chance he is still there. The 55% and 62% tags mark the plan's second choices.</figcaption>
   </figure>
   <div class="walk">
     <p>The availability numbers come from thousands of simulated drafts. Each rival is modelled as a follower of the platform's own rank list plus noise that grows with pick depth, plus run contagion when a position has just been picked several times in a row, plus a tendency tag such as quarterback-early or homer. The recommendation multiplies each candidate's ceiling value over replacement by how likely he is to be gone before your next turn and by how badly your roster needs the position, then applies hard rules that are never traded off. Tiers are found by a Gaussian mixture per position on league-scored points, because plain clustering spent all its resolution subdividing the replacement-level tail.</p>
