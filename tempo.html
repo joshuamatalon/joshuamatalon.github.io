@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TEMPO — a live draft aid that ran four real drafts · Joshua Matalon</title>
-<meta name="description" content="TEMPO puts one number on every player in a fantasy-football auction or snake draft, opens it into seven auditable steps, and re-solves the roster plan after every sale. Four real drafts in 2026, with the results.">
+<meta name="description" content="TEMPO puts one number on every player in a fantasy-football auction or snake draft. The number is built from projections, two seasons of play-by-play, cited research on 250 players and the room's own bidding history, then re-solved for your roster after every sale. Four real drafts in 2026, with the results.">
 <meta property="og:image" content="https://joshuamatalon.github.io/assets/tempo-auction-desk.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b0421a'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,Arial' font-size='18' font-weight='700' text-anchor='middle' fill='white'%3EJM%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">
@@ -14,7 +14,7 @@
   <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
   <p class="kicker">Decision tool · Python + JavaScript · 2026 season</p>
   <h1>TEMPO. One number per player, and the reasons behind it, while the clock runs.</h1>
-  <p class="lede">A fantasy-football auction moves about $2,400 across a table in three hours, and you get roughly ten seconds per player to decide whether the room's price is a good one. TEMPO is the tool I built to make that decision for my own leagues, then ran in four real drafts this season: two salary-cap auctions and two snake drafts. The screens below are from a demonstration league with generic team names; the numbers in the results section are from the real rooms.</p>
+  <p class="lede">A fantasy-football auction moves about $2,400 across a table in three hours, and you get roughly ten seconds per player to decide whether the room's price is a good one. A cheat sheet gives you a projection times a constant. TEMPO's number is different: it is built from four projection systems, two seasons of play-by-play, cited research on 250 players and the room's own bidding history, then re-solved for <b>your</b> roster after every sale. I built it for my own leagues and ran it in four real drafts this season. <b>The screens below are from a demonstration league with generic team names; the results section is from the real rooms.</b></p>
 
   <div class="facts">
     <div class="fact"><div class="v">4</div><div class="l">real drafts run, Aug 26 to Sep 7, 2026</div></div>
@@ -34,17 +34,77 @@
     <figure><img src="assets/tempo-why.jpg" alt="Why these? Each planned slot shows the obvious upgrade and what it would cost the whole team: Josh Allen instead? −16 pts for the whole team."><figcaption>Every slot in the plan can be challenged. "Why these?" prices the obvious upgrade against the whole team, not the one slot: Josh Allen instead of Caleb Williams costs sixteen points across the roster, because the money has to come out of a running back.</figcaption></figure>
   </div>
 
-  <h2>The engine: every price opens into seven steps</h2>
+  <h2>How the number is made</h2>
+  <p class="lede">Every price on the card is the last line of a seven-step trace, and the Engine tab shows that trace for whoever is nominated. Nothing on it is computed differently from the card. Here it is for one running back, top to bottom.</p>
+
   <figure class="figure">
-    <img src="assets/tempo-engine.jpg" alt="Engine view for Jahmyr Gibbs: four projection sources, scouting chips capped at a few percent each, the week-by-week schedule, and points turned into a price.">
-    <figcaption>Nothing on the card is a black box. Step one shows the four independent projections and which one is the starting point. Step two shows the scouting adjustments as capped chips, so no single opinion can swing a price far. Step three is the schedule week by week. Step four turns points over a replacement player into dollars at what a point costs in this room right now. Three more steps below the fold handle the room's remaining money, scarcity at the position, and the endgame.</figcaption>
+    <img src="assets/tempo-engine.jpg" alt="Engine view for Jahmyr Gibbs, steps one to four: four projection sources, scouting chips capped at a few percent each, the week-by-week schedule, and points turned into a price.">
+    <figcaption>Steps one to four: where the projection comes from, what the research adds, who he plays, and what his points are worth in dollars.</figcaption>
   </figure>
+
+  <div class="walk">
+    <h3><span>1</span>Where the projection comes from</h3>
+    <p>Four independent forecasts of his season, shown side by side. The best one is the starting point and the others are a cross-check. The first source already scores in this league's own rules. The second is a stat-line projection re-scored into them. The third is where several hundred experts rank him, with how much they disagree. The fourth is where the market actually drafts him. Players no projection covers still get a number, through a points-by-rank curve fitted per position from the players who do.</p>
+    <p>The typical season and the best case are two different numbers on purpose. The gap between them comes from how much the experts disagree about him, converted into points. A player everyone agrees on gets a narrow band; a player the experts split on gets a wide one.</p>
+
+    <h3><span>2</span>What the research adds</h3>
+    <p>Each chip is one fact from his research file, turned into a small bounded nudge: an active injury, a new play-caller, the schedule, week-to-week volatility, durability from his age and the games he has missed. No single chip can move him more than a few percent, and the whole layer is capped, because a rules layer confident enough to move a player forty percent would be inventing precision.</p>
+    <p>Behind the chips is a written verdict per player: buy, hold, fade or avoid, with a thesis and the facts that would change it. Each fact carries the field it came from and that field carries its source, so the chain from the stance on the card back to the article it rests on is unbroken. This layer runs as plain rules over structured fields. No language model runs on draft night, and any of it can be re-derived by hand.</p>
+
+    <h3><span>3</span>Who he plays, week by week</h3>
+    <p>Every opponent on his schedule, coloured by what that defense allowed to his position slot over the last two seasons, with the facts the engine knows about it: a shadow corner, a new coordinator, a lost starter, a blitz-heavy front. The outlined weeks are the fantasy playoffs, and the best-case number weights them more, because in a league that pays only for first place the ceiling that matters is the ceiling in December.</p>
+    <p>Two honesty rules keep this layer small. Defense quality is noisy year to year, so it is shrunk hard toward average, harder still where the coordinator changed. And a second layer prices the mechanism rather than the outcome: his own offensive line against each week's defensive front, so a bad line facing an elite pass rush compounds and a great line neutralises it.</p>
+
+    <h3><span>4</span>Turning points into a price</h3>
+    <p>His season points are a ceiling-weighted blend of the typical season and the best case, then averaged half and half with the consensus view of him. That half weight was not a taste: dry runs graded both ways chose it. Subtract the points of the last player who would still start at his position, and you have what he adds. Multiply by what a point costs in this room right now, which is the money still on the table divided by the points still available, and you have his fair price. His value to your team is higher than his fair price when your roster needs him more than an average roster would.</p>
+    <p>The replacement level is flex-aware. Running backs, receivers and tight ends compete for the same flex slots, so the engine works out which positions actually fill them before it decides who the last starter is.</p>
+  </div>
+
+  <figure class="figure">
+    <img src="assets/tempo-engine-room.jpg" alt="Step five: what the other teams will pay. Eleven rivals, each with the most it would likely go and the money it has left; the second-highest sets the price; likely price $72 with a band of $61 to $76.">
+    <figcaption>Step five: the room. Each rival's ceiling, the one that sets the price, and where the model's prediction comes from.</figcaption>
+  </figure>
+
+  <div class="walk">
+    <h3><span>5</span>What the other teams will pay</h3>
+    <p>The room is modelled, not assumed. For the auction TEMPO was built for, the price model is that room's own auction from the year before, all of its sales: what it paid at each market rank, how much it overpays receivers and underpays quarterbacks, and how quickly its money leaves. Each rival's ceiling is that price tilted by what the rival still needs and capped by what it can still afford. The price you pay is set by the second-highest ceiling, so that bar matters most.</p>
+    <p>As the night goes on, every sale is compared with what the model predicted for it at the time. The room's bias and spread are re-estimated from those residuals and shrunk toward the prior, so a room that runs hot moves every remaining prediction up within a few sales, and a room with no history starts from a consensus curve and learns the same way. The band under the likely price is that learned spread.</p>
+  </div>
+
+  <figure class="figure">
+    <img src="assets/tempo-engine-ladder.jpg" alt="Step six: the most you should pay. A price ladder from $1 to $100; at each price the best roster with him is compared with the best roster without him. Green through $81, red from $90. BID TO $81.">
+    <figcaption>Step six: the price ladder. Green rungs are prices where buying him still improves your best possible team; red rungs are where the money does more elsewhere. Your number is the last green rung.</figcaption>
+  </figure>
+
+  <div class="walk">
+    <h3><span>6</span>The most you should pay</h3>
+    <p>This is the step nothing static can do. For each price on the ladder the engine pretends you bought him at that price, rebuilds the best roster you can still afford with what is left, at what each remaining player is predicted to cost, and compares it with the best roster you could build by skipping him. The rebuild is a budget optimisation over your open slots, with kicker, defense and bench held at tail prices plus a cushion. Your number is the highest price at which the roster with him still beats the roster without him. Because the rest of the roster is re-planned at every rung, the number already accounts for the cheaper alternative at his position and for what his money would have bought elsewhere.</p>
+    <p>Unspent money is worthless at the end of the night, so when your remaining money exceeds what your plan can spend at predicted prices, every number on your card rises. When it is the reverse, they fall.</p>
+
+    <h3><span>7</span>Where everyone stands</h3>
+    <p>Every team's roster as it stands, with its empty starter slots filled at what its remaining money can still buy, against yours plus your plan. It is the same objective every other number uses: total starting-lineup points, ceiling-weighted. It is also the check on the whole model. If the projected finish does not move when you buy someone, the number that told you to buy was wrong.</p>
+  </div>
+
+  <h2>What goes in</h2>
+  <table class="ledger">
+    <tr><th>Projections</th><td>Two independent season projection systems, one already in this league's scoring, one re-scored into it from its stat lines.</td></tr>
+    <tr><th>Experts and market</th><td>Expert consensus rank with each player's spread of expert opinion; average draft position from two markets; the platform's own rank list, which its autopick follows.</td></tr>
+    <tr><th>Two seasons of play-by-play</th><td>Per-player usage, snap share, games missed and league-scored points for 2024 and 2025; per-team pace, pass rate over expected and red-zone tendencies.</td></tr>
+    <tr><th>What defenses allow</th><td>Fantasy points allowed by every defense to every position slot, scored in this league's rules from raw components, plus the 2026 schedule grid.</td></tr>
+    <tr><th>The trenches</th><td>Offensive line and defensive front metrics from play-by-play joined with charting data on blitz rates and sack attribution, blended with a forward-looking 2026 line ranking.</td></tr>
+    <tr><th>Coaching and context</th><td>2026 head coach and both coordinators for all 32 teams, parsed from the source tables rather than a summary; shadow corners, scheme changes and personnel moves, each with a citation.</td></tr>
+    <tr><th>Research files</th><td>A dossier per player on 250 players: role, depth chart, competition, contract, and injury status with a date and a source. A written verdict per player synthesised from the dossier.</td></tr>
+    <tr><th>The room</th><td>For the auction it was built for, that room's own prior-year auction, every sale. For rooms with no history, a synthetic market from consensus value at the room's roster settings.</td></tr>
+  </table>
 
   <h2>Snake mode: on the clock, with the plan from here</h2>
   <figure class="figure">
     <img src="assets/tempo-snake-desk.jpg" alt="Snake draft view: YOU ARE ON THE CLOCK, pick 3 round 1, three recommendations, then the plan for picks 14, 19, 30 and 35 with the probability each player is still available.">
     <figcaption>In a snake draft the question is different: who to take now so that the next four turns still work. The three cards are the recommendation; the plan below simulates the other seven managers to your next pick and prints, for each candidate, the chance he is still there. The 55% and 62% tags are the honest ones: those players are the plan's second choices for a reason.</figcaption>
   </figure>
+  <div class="walk">
+    <p>The availability numbers come from thousands of simulated drafts. Each rival is modelled as a follower of the platform's own rank list plus noise that grows with pick depth, plus run contagion when a position has just been picked several times in a row, plus a tendency tag such as quarterback-early or homer. The recommendation multiplies each candidate's ceiling value over replacement by how likely he is to be gone before your next turn and by how badly your roster needs the position, then applies hard rules that are never traded off. Tiers are found by a Gaussian mixture per position on league-scored points, because plain clustering spent all its resolution subdividing the replacement-level tail.</p>
+  </div>
 
   <div class="phones">
     <figure><img src="assets/tempo-phone-card.jpg" alt="The auction card on a phone"><figcaption>On draft night this runs on a phone next to the league app. Entering a sale is three taps: price, buyer, sold. Undo is one.</figcaption></figure>
@@ -62,11 +122,11 @@
   <div class="prose">
     <h2>How it is built</h2>
     <ul>
-      <li>Python engine: four projection sources blended, then a valuation over replacement per position, a Monte Carlo simulation of the other managers, and a re-optimised plan after every sale or pick.</li>
-      <li>For the auction it was built for, the room model is learned from that room's own prior-year auction, all 180 sales; replaying them reconciles every team to the dollar, and the $1 to $3 tail predicts within sixty cents.</li>
-      <li>Flask server with server-sent events; a single-file JavaScript front end; every sale journaled append-only so a restart rebuilds the state and any entry can be undone.</li>
-      <li>Every number on the card is produced by the same seven-step trace the Engine tab shows. There is no separate display logic to drift.</li>
-      <li>Verification before each draft: scripted dry runs through the live server and page, seeds recorded, invariants checked, then a hindsight grader that scores the final roster against the best roster the room's prices allowed.</li>
+      <li>Python engine, deterministic end to end: the same inputs always produce the same card, and every intermediate value is exposed on the Engine tab. No language model runs at draft time; the research layer is rules over structured, cited fields.</li>
+      <li>Every adjustment is bounded and every bound is written down with its reason. The research layer nudges the market blend; it does not replace it.</li>
+      <li>Flask server with server-sent events; a single-file JavaScript front end; every sale journaled append-only with the prediction that stood at the time, so a restart rebuilds the state, any entry can be undone, and the room calibration never uses a reconstructed number.</li>
+      <li>Replaying the prior year's auction through the price model reconciles every team's spending to the dollar, and the $1 to $3 tail predicts within sixty cents.</li>
+      <li>Verification before each draft: scripted dry runs through the live server and page across a grid of room behaviours, seeds recorded, invariants checked, then a hindsight grader that scores the final roster against the best roster the room's prices allowed. A facade audit confirms every research field the engine claims to read actually moves a number.</li>
     </ul>
     <p class="stack">TEMPO runs on the draft-night network and is not a public app. A live demo on a demonstration league is available on request.</p>
   </div>
