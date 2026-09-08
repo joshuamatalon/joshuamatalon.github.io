@@ -40,6 +40,13 @@
       <li><b>Coach.</b> Eight phone-first views reached only from the path: the turn, paying for things, five fighting words, combat, six timing words, when to play, moving, scoring, and the rest. Goals are streaks, not totals: sixty random answers produce a best streak of two, so the coin-flip drills cannot be passed by luck.</li>
       <li><b>Design discipline.</b> Two typefaces, one gold accent, hairlines instead of coloured slabs. Coach was rebuilt to the deck browser's standard after the first version looked like a quiz app next to it.</li>
     </ul>
+    <h2>How it was built</h2>
+    <ul>
+      <li><b>The corpus came first.</b> 989 mechanically distinct cards pulled from a community database that served printed text only. All 63 official errata were reconciled by hand, 51 of which the source did not carry. Equipment bonuses were read off card images because no database had them. Every name was matched to the printed card face. The full rules text, 2,479 lines, was read and cited by section for every design decision, and a 557-row collection ledger was joined to the corpus on set and collector number.</li>
+      <li><b>Design ran from the rules, not from card lists.</b> A structural analysis of what the scoring, damage and action economy reward, a read of the owned pool, and a design constitution drawn from the multiplayer-format literature of older card games: tiers anchored to observable properties, an interaction floor, threat-and-answer accounting for every matchup, an enumerated exclusion list.</li>
+      <li><b>Construction is a global allocation problem.</b> Demand per card across all 23 cores, every leader module and a reserved competitive deck must fit the owned counts, and shared table resources must be assignable for every five-deck subset. The verifier checks colour identity, copy caps, leader and signature restrictions, two format ban lists, the exclusion list, interaction floors and every leader-by-package variant. Docs, pull sheets and the card-art browser are generated from one JSON source, and the art cache is audited for right game, right card and right printing.</li>
+      <li><b>Coach is generated and audited.</b> Keyword glosses are extracted from the corpus rather than typed, rules are cited by section, and an audit reads the shipped page, re-derives every drill's premise and answer from the corpus and the rules, and fails the build on any disagreement. It was calibrated by corrupting builds, and simulated random guessing never passes.</li>
+    </ul>
     <p class="stack">Coach's HTML is generated from a content model by script, and the generator's audit refuses to build if a keyword belongs to no step, a step lacks art, or any view is unreachable from the path.</p>
   </div>
 
