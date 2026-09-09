@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demand scanner: a 26-source web scraper that ranks what buyers are posting, on a weekly schedule · Joshua Matalon</title>
+<meta name="description" content="A Python scraper over 26 job feeds, app stores and forums that deduplicates, clusters and scores what buyers posted in the last 14 days, with a source-health table, and runs every Monday.">
+<meta property="og:image" content="https://joshuamatalon.github.io/assets/scanner-report.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b0421a'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,Arial' font-size='18' font-weight='700' text-anchor='middle' fill='white'%3EJM%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
+  <p class="kicker">Web scraping and reporting · Python · in weekly use</p>
+  <h1>Demand scanner. Twenty-six sources, one ranked table, every Monday at seven.</h1>
+  <p class="lede">A scraper that reads job feeds, app stores, asset marketplaces and forum threads, keeps every record with its source, deduplicates by URL, clusters by content, and scores each cluster on how much was posted, what it paid and how crowded it is. The output is one page: a ranked table with example links, a source-health table that says which sources answered and which did not, and the phrases that did not fit any cluster. <b>It runs on a schedule and reports its own failures rather than hiding them.</b></p>
+
+  <div class="facts">
+    <div class="fact"><div class="v">26</div><div class="l">sources configured: a job marketplace, four forum families, two app stores, a creator marketplace, an indie games store</div></div>
+    <div class="fact"><div class="v">2,092</div><div class="l">raw records in the last run, 1,817 after URL deduplication, 1,568 inside the 14-day window</div></div>
+    <div class="fact"><div class="v">19 / 4 / 3</div><div class="l">sources that answered, returned empty, and errored, each named in the report with the error text</div></div>
+    <div class="fact"><div class="v">14 min</div><div class="l">for a full run under the forums' rate limits; a re-render from saved data takes seconds</div></div>
+  </div>
+
+  <figure class="figure">
+    <img src="assets/scanner-report.jpg" alt="Scanner report: a ranked table of makes with channel, evidence count, price signal, competition, build days, score and example links">
+    <figcaption>The report. Each row is a cluster of what buyers posted, with the count of listings behind it, the median price signal, how many bids or competing listings it faces, and three example links a reader can open to check the claim.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>How it is built</h2>
+    <ul>
+      <li>Each source is one module with one job: fetch and normalise. Supply-side posts, people offering rather than hiring, are filtered by rule per source, and the counts of what was excluded are written to the health file.</li>
+      <li>Every raw record is kept, with its cluster id, in a line-delimited file per run. Deduplication happens after clustering, so the audit trail is complete and the scores are computed on unique listings.</li>
+      <li>Scoring is a weighted sum of demand, price and competition with the weights in a config file that must sum to one; a divide-by-zero guard makes a source with a single record score flat rather than crash.</li>
+      <li>The report is derived from the health file re-read from disk, not from the in-memory run, so what is reported cannot differ from what was saved.</li>
+      <li>A self-test rebuilds the ranked table from a saved raw file through the real scoring code and compares it to the report, to the decimal. It was run by three independent reviewers before the schedule was registered.</li>
+      <li>Scheduled task every Monday at 07:00; the top five rows are pushed to a phone when it finishes.</li>
+    </ul>
+    <p class="stack">This tool runs locally and is not public. The report above is a real run from 8 September 2026 with its own styling; a scraper for a buyer's sources ships with the same audit trail, health table and self-test.</p>
+  </div>
+
+  <div class="next"><a href="tempo.html">Next: TEMPO →</a><a href="documents.html">← Documents</a><a href="index.html">All work</a></div>
+</main>
+</body>
+</html>
