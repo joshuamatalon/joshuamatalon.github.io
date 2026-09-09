@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TEMPO — a live draft aid that ran four real drafts · Joshua Matalon</title>
+<title>TEMPO, a live draft aid that ran four real drafts · Joshua Matalon</title>
 <meta name="description" content="TEMPO puts one number on every player in a fantasy-football auction or snake draft. The number is built from projections, two seasons of play-by-play, cited research on 250 players and the room's own bidding history, then re-solved for your roster after every sale. Four real drafts in 2026, with the results.">
 <meta property="og:image" content="https://joshuamatalon.github.io/assets/tempo-auction-desk.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b0421a'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,Arial' font-size='18' font-weight='700' text-anchor='middle' fill='white'%3EJM%3C/text%3E%3C/svg%3E">
@@ -13,8 +13,8 @@
 <main>
   <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
   <p class="kicker">Decision tool · Python + JavaScript · 2026 season</p>
-  <h1>TEMPO. One number per player, and the reasons behind it, while the clock runs.</h1>
-  <p class="lede">A fantasy-football auction moves about $2,400 across a table in three hours, and you get roughly ten seconds per player to decide whether the room's price is a good one. A cheat sheet gives you a projection times a constant. TEMPO's number is different: it is built from four projection systems, two seasons of play-by-play, cited research on 250 players and the room's own bidding history, then re-solved for <b>your</b> roster after every sale. I built it for my own leagues and ran it in four real drafts this season. <b>The screens below are from a demonstration league with generic team names; the results section is from the real rooms.</b></p>
+  <h1>TEMPO gives you one number per player, and the reasons behind it, while the clock runs.</h1>
+  <p class="lede">A fantasy-football auction moves about $2,400 across a table in three hours, and you get roughly ten seconds per player to decide whether the room's price is a good one. A cheat sheet gives you a projection times a constant. TEMPO builds its number from four projection systems, two seasons of play-by-play, cited research on each player and the room's own bidding history, and then re-solves it for <b>your</b> roster after every sale. I built it for my own leagues and ran it in four real drafts this season. <b>The screens below are from a demonstration league with generic team names. The results section is from the real rooms.</b></p>
 
   <div class="facts">
     <div class="fact"><div class="v">4</div><div class="l">real drafts run, Aug 26 to Sep 7, 2026</div></div>
@@ -56,7 +56,7 @@
     <p>Two rules bound this layer. Defense quality is noisy year to year, so it is shrunk hard toward average, harder still where the coordinator changed. And a second layer prices the mechanism rather than the outcome: his own offensive line against each week's defensive front, so a bad line facing an elite pass rush compounds and a great line neutralises it.</p>
 
     <h3><span>4</span>Turning points into a price</h3>
-    <p>His season points are a ceiling-weighted blend of the typical season and the best case, then averaged half and half with the consensus view of him. That half weight was not a taste: dry runs graded both ways chose it. Subtract the points of the last player who would still start at his position, and you have what he adds. Multiply by what a point costs in this room right now, which is the money still on the table divided by the points still available, and you have his fair price. His value to your team is higher than his fair price when your roster needs him more than an average roster would.</p>
+    <p>His season points are a ceiling-weighted blend of the typical season and the best case, then averaged half and half with the consensus view of him. Dry runs graded both ways chose that half weight. Subtract the points of the last player who would still start at his position, and you have what he adds. Multiply by what a point costs in this room right now, which is the money still on the table divided by the points still available, and you have his fair price. His value to your team is higher than his fair price when your roster needs him more than an average roster would.</p>
     <p>The replacement level is flex-aware. Running backs, receivers and tight ends compete for the same flex slots, so the engine works out which positions actually fill them before it decides who the last starter is.</p>
   </div>
 
@@ -67,7 +67,7 @@
 
   <div class="walk">
     <h3><span>5</span>What the other teams will pay</h3>
-    <p>The room is modelled, not assumed. For the auction TEMPO was built for, the price model is that room's own auction from the year before, all of its sales: what it paid at each market rank, how much it overpays receivers and underpays quarterbacks, and how quickly its money leaves. Each rival's ceiling is that price tilted by what the rival still needs and capped by what it can still afford. The price you pay is set by the second-highest ceiling, so that bar matters most.</p>
+    <p>The room is modelled from its own history. For the auction TEMPO was built for, the price model is that room's own auction from the year before, all of its sales: what it paid at each market rank, how much it overpays receivers and underpays quarterbacks, and how quickly its money leaves. Each rival's ceiling is that price tilted by what the rival still needs and capped by what it can still afford. The price you pay is set by the second-highest ceiling, so that bar matters most.</p>
     <p>As the night goes on, every sale is compared with what the model predicted for it at the time. The room's bias and spread are re-estimated from those residuals and shrunk toward the prior, so a room that runs hot moves every remaining prediction up within a few sales, and a room with no history starts from a consensus curve and learns the same way. The band under the likely price is that learned spread.</p>
   </div>
 
@@ -122,11 +122,11 @@
   <div class="prose">
     <h2>How it is built</h2>
     <ul>
-      <li>Python engine, deterministic end to end: the same inputs always produce the same card, and every intermediate value is exposed on the Engine tab. No language model runs at draft time; the research layer is rules over structured, cited fields.</li>
-      <li>Every adjustment is bounded and every bound is written down with its reason. The research layer nudges the market blend; it does not replace it.</li>
-      <li>Flask server with server-sent events; a single-file JavaScript front end; every sale journaled append-only with the prediction that stood at the time, so a restart rebuilds the state, any entry can be undone, and the room calibration never uses a reconstructed number.</li>
+      <li>The engine is Python and deterministic end to end, so the same inputs always produce the same card, and every intermediate value is exposed on the Engine tab. No language model runs at draft time. The research layer is plain rules over structured, cited fields.</li>
+      <li>Every adjustment is bounded, and every bound is written down with its reason. The research layer nudges the market blend and never replaces it.</li>
+      <li>A Flask server pushes updates to a single-file JavaScript front end. Every sale is journaled append-only with the prediction that stood at the time, so a restart rebuilds the state, any entry can be undone, and the room calibration never uses a reconstructed number.</li>
       <li>Replaying the prior year's auction through the price model reconciles every team's spending to the dollar, and the $1 to $3 tail predicts within sixty cents.</li>
-      <li>Verification before each draft: scripted dry runs through the live server and page across a grid of room behaviours, seeds recorded, invariants checked, then a hindsight grader that scores the final roster against the best roster the room's prices allowed. A facade audit confirms every research field the engine claims to read actually moves a number.</li>
+      <li>Before each draft I run scripted dry runs through the live server and page across a grid of room behaviours, with seeds recorded and invariants checked, and then a hindsight grader scores the final roster against the best roster the room's prices allowed. A facade audit confirms that every research field the engine claims to read actually moves a number.</li>
     </ul>
     <p class="stack">TEMPO runs on the draft-night network and is not a public app. A live demo on a demonstration league is available on request.</p>
   </div>

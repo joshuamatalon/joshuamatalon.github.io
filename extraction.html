@@ -13,8 +13,8 @@
 <main>
   <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
   <p class="kicker">Data extraction · PDF to Excel · public data sample</p>
-  <h1>PDF to validated Excel. Every number checked against the source's own arithmetic.</h1>
-  <p class="lede">The Federal Reserve's H.15 release prints a 43-row table of interest rates. Its PDF text layer has no table structure and runs words together, so a copy and paste gives one unusable line per row. This workbook rebuilds rows, columns and the three-level headings from the position of every word on the page, then checks itself: the Fed defines the published weekly figure as the mean of the five daily values, so each row's average is recomputed and compared. <b>A row that does not tie is a mis-read cell, and it is listed first, not passed.</b></p>
+  <h1>A PDF table turned into Excel, with every number checked against the source's own arithmetic.</h1>
+  <p class="lede">The Federal Reserve's H.15 release prints a 43-row table of interest rates. Its PDF text layer has no table structure and runs words together, so a copy and paste gives you one unusable line per row. This workbook rebuilds the rows, the columns and the three-level headings from the position of every word on the page. Then it checks itself. The Fed defines the published weekly figure as the mean of the five daily values, so each row's average is recomputed and compared. <b>A row that does not tie is a mis-read cell, and it is listed first instead of passed.</b></p>
 
   <div class="facts">
     <div class="fact"><div class="v">43</div><div class="l">rows rebuilt from word coordinates across two PDF pages, with section, subsection and instrument restored</div></div>
@@ -25,28 +25,28 @@
 
   <figure class="figure">
     <img src="assets/extract-rates.jpg" alt="Rates sheet: 43 instruments with section and subsection columns, five daily values, two weekly averages and the monthly average, formatted to two decimals">
-    <figcaption>The Rates tab. Section and subsection columns carry the headings the PDF printed as indents. Numbers are right-aligned to two decimals; the source's "n.a." is kept and muted rather than replaced with a blank or a zero.</figcaption>
+    <figcaption>The Rates tab. The section and subsection columns carry the headings the PDF printed as indents. Numbers are right-aligned to two decimals, and the source's "n.a." is kept and muted instead of being replaced with a blank or a zero.</figcaption>
   </figure>
 
   <figure class="figure">
     <img src="assets/extract-validation.jpg" alt="Validation sheet: status, section, instrument, daily values used, recomputed weekly average, published figure and difference; the one row that does not tie is listed first">
-    <figcaption>The Validation tab. One row does not tie, the effective federal funds rate, by 0.02. That is a fact about the source's averaging method, not the extraction, and the sheet says to confirm it before use rather than rounding it away.</figcaption>
+    <figcaption>The Validation tab. One row does not tie, the effective federal funds rate, by 0.02. That says something about the source's averaging method, not about the extraction, and the sheet tells the reader to confirm it before use instead of rounding it away.</figcaption>
   </figure>
 
   <div class="prose">
     <h2>How the table was read</h2>
     <ul>
-      <li>Every word on the page comes with coordinates. Words are grouped into lines by vertical position, numeric tokens are assigned to columns by order, and the heading level is inferred from the indent of the label.</li>
-      <li>Labels are rebuilt because the text layer drops spaces: "Treasuryconstantmaturities" becomes "Treasury constant maturities" through a fixed dictionary, and footnote digits glued to labels are stripped.</li>
+      <li>Every word on the page comes with coordinates. The script groups words into lines by vertical position, assigns numeric tokens to columns by order, and infers the heading level from the indent of the label.</li>
+      <li>Labels have to be rebuilt because the text layer drops spaces. A fixed dictionary turns "Treasuryconstantmaturities" back into "Treasury constant maturities", and footnote digits glued to labels are stripped.</li>
       <li>The Source tab records the document, its URL, the fetch date, the pages parsed, the method in one paragraph, and the known limits.</li>
     </ul>
     <h2>What a buyer gets</h2>
     <ul>
-      <li>A workbook with About, Rates, Validation and Source tabs, formatted to a written standard and openable without any add-in.</li>
-      <li>A validation surface that a reader can audit in a minute: which rows tie, which do not, and by how much.</li>
-      <li>The same script runs against the next release, so a recurring extraction is a refresh, not a repeat.</li>
+      <li>A workbook with About, Rates, Validation and Source tabs, formatted to a written standard, that opens without any add-in.</li>
+      <li>A validation tab a reader can audit in a minute: which rows tie, which do not, and by how much.</li>
+      <li>A script that runs against the next release too, so a recurring extraction becomes a refresh.</li>
     </ul>
-    <p class="stack">Download <a href="samples/h15_selected_interest_rates.xlsx">the workbook</a> and <a href="samples/h15-source.pdf">the source PDF</a> it was read from. Public data, used as a sample of the deliverable.</p>
+    <p class="stack">Download <a href="samples/h15_selected_interest_rates.xlsx">the workbook</a> and <a href="samples/h15-source.pdf">the source PDF</a> it was read from. This is public data, used here as a sample of the deliverable.</p>
   </div>
 
   <div class="next"><a href="register.html">Next: consolidation register →</a><a href="spreadsheets.html">← Spreadsheet automation</a><a href="index.html">All work</a></div>

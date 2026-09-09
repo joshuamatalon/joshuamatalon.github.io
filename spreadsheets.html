@@ -13,8 +13,8 @@
 <main>
   <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
   <p class="kicker">Spreadsheet automation · Excel, Power Query · sample deliverable</p>
-  <h1>Weekly returns loader. Drop the file in the folder, press Refresh, read the exceptions.</h1>
-  <p class="lede">A firm receives a returns workbook every week and someone retypes it into a master file. This workbook replaces the retyping. One Power Query reads every weekly file in a folder, in the shape each sender uses, fills one tab per portfolio, and recomputes every closing value from the opening value and the stated return. Rows that do not tie are listed first, with the file to check. <b>The whole weekly routine is Data, Refresh All.</b></p>
+  <h1>A weekly returns loader. Drop the file in the folder, press Refresh, read the exceptions.</h1>
+  <p class="lede">A firm receives a returns workbook every week and someone retypes it into a master file. This workbook replaces the retyping. One Power Query reads every weekly file in a folder, in whatever shape each sender uses, fills one tab per portfolio, and recomputes every closing value from the opening value and the stated return. Rows that do not tie are listed first, with the file to check. <b>The whole weekly routine is Data, Refresh All.</b></p>
 
   <div class="facts">
     <div class="fact"><div class="v">1</div><div class="l">cell to edit: the source folder. No formula or query contains a path</div></div>
@@ -25,12 +25,12 @@
 
   <figure class="figure">
     <img src="assets/returns-summary.jpg" alt="Summary sheet: the source folder input cell, then one row per portfolio with weeks loaded, latest week, latest closing NAV, latest YTD return and rows that do not tie">
-    <figcaption>The Summary tab. The tinted cell with blue text is the only input. The table beneath it is a query too: one row per portfolio, with the count of rows that did not tie in the last column.</figcaption>
+    <figcaption>The Summary tab. The tinted cell with blue text is the only input. The table beneath it is a query too, with one row per portfolio and the count of rows that did not tie in the last column.</figcaption>
   </figure>
 
   <figure class="figure">
     <img src="assets/returns-reconciliation.jpg" alt="Reconciliation sheet: 18 rows with status, portfolio, week, opening NAV, weekly return, expected closing, closing NAV, difference and source file; the one row that does not tie is listed first">
-    <figcaption>The check. Closing NAV must equal opening NAV grown by the weekly return, within one cent. The one row that does not tie is first, in words, with the difference and the file it came from. The sample data has that error planted so the check can be seen working.</figcaption>
+    <figcaption>The check. Closing NAV must equal opening NAV grown by the weekly return, within one cent. The one row that does not tie comes first, in words, with the difference and the file it came from. I planted that error in the sample data so the check can be seen working.</figcaption>
   </figure>
 
   <div class="prose">
@@ -38,21 +38,21 @@
     <ul>
       <li>Title rows, blank rows and notes above or below the table in a source file. The query finds the header row by its content.</li>
       <li>Percentages exported as text in one week and as numbers in the next. Both are typed to numbers before anything is computed.</li>
-      <li>Files arriving in any order, with any name that starts with the agreed prefix. Every row is stamped with its source file.</li>
+      <li>Files arriving in any order, with any name that starts with the agreed prefix. Every row is stamped with the file it came from.</li>
     </ul>
     <h2>What it refuses to do</h2>
     <ul>
-      <li>Correct a source file. A row that does not tie stays as sent and is flagged. The fix belongs in the source, and the flag says which file.</li>
-      <li>Hide a path in a formula. The folder is a named cell on the Summary tab, and moving the folder means editing that one cell.</li>
+      <li>It will not correct a source file. A row that does not tie stays as sent and gets flagged, because the fix belongs in the source, and the flag says which file.</li>
+      <li>It will not hide a path in a formula. The folder is a named cell on the Summary tab, so moving the folder means editing that one cell.</li>
     </ul>
     <h2>How it is built</h2>
     <ul>
-      <li>Eight tabs: About, Summary, one per portfolio, All weeks, Reconciliation. Every table is a Power Query load, so a refresh rebuilds all of them from the files.</li>
-      <li>The About tab is the documentation: purpose, the three-step routine, what each tab holds, what the check means, what the workbook does not do.</li>
-      <li>Verified from the disproving angle: a script opens the saved file without Excel and checks that all 18 rows loaded, the text percentages became numbers, exactly the planted error is flagged and listed first, and the frozen headers and gridlines are as specified.</li>
-      <li>Formatted to a written standard: one typeface, hairline under the header only, numbers right-aligned with fixed decimals, dates left, an input cell tinted, flags in words with colour as support.</li>
+      <li>There are eight tabs: About, Summary, one per portfolio, All weeks and Reconciliation. Every table is a Power Query load, so a refresh rebuilds all of them from the files.</li>
+      <li>The About tab is the documentation. It gives the purpose, the three-step routine, what each tab holds, what the check means, and what the workbook does not do.</li>
+      <li>I verified it from the disproving angle. A script opens the saved file without Excel and checks that all 18 rows loaded, that the text percentages became numbers, that exactly the planted error is flagged and listed first, and that the frozen headers and gridlines are as specified.</li>
+      <li>It is formatted to a written standard: one typeface, a hairline under the header only, numbers right-aligned with fixed decimals, dates on the left, the input cell tinted, and flags in words with colour as support.</li>
     </ul>
-    <p class="stack">Download the sample: <a href="samples/weekly-returns-master.xlsx">the master workbook</a> and the three source files (<a href="samples/week_01_2026-08-14.xlsx">week 1</a>, <a href="samples/week_02_2026-08-21.xlsx">week 2</a>, <a href="samples/week_03_2026-08-28.xlsx">week 3</a>). Put them in one folder, set the folder cell, refresh. The data is synthetic.</p>
+    <p class="stack">Download the sample: <a href="samples/weekly-returns-master.xlsx">the master workbook</a> and the three source files (<a href="samples/week_01_2026-08-14.xlsx">week 1</a>, <a href="samples/week_02_2026-08-21.xlsx">week 2</a>, <a href="samples/week_03_2026-08-28.xlsx">week 3</a>). Put them in one folder, set the folder cell, and refresh. The data is synthetic.</p>
   </div>
 
   <div class="next"><a href="extraction.html">Next: PDF to validated Excel →</a><a href="index.html">All work</a></div>
