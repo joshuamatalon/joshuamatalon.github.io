@@ -13,8 +13,8 @@
 <main>
   <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
   <p class="kicker">Reference site + phone trainer · August 2026</p>
-  <h1>Riftbound. 23 verified decks from one collection, and a phone trainer audited against the rules.</h1>
-  <p class="lede">The Battle Box is 23 decks for a trading card game, built from one owned collection over a hand-reconciled corpus of 989 cards and the full rulebook, with every list solved and verified by script. Coach is a nine-step phone trainer whose audit re-derives every drill's answer from the rules text before the page can ship.</p>
+  <h1>Riftbound is 23 verified decks from one collection, and a phone trainer audited against the rules.</h1>
+  <p class="lede">The Battle Box holds 23 decks for a trading card game, built from one owned collection. Under them sits a card corpus I reconciled by hand against the printed cards and the full rulebook, and a script solves and verifies every list. Coach is a nine-step phone trainer whose audit re-derives every drill's answer from the rules text before the page can ship.</p>
 
   <div class="facts">
     <div class="fact"><div class="v">23</div><div class="l">decks across three tiers and all fifteen domain pairs, plus 18 swappable leader modules</div></div>
@@ -25,28 +25,28 @@
 
   <figure class="figure">
     <img src="assets/riftbound-box.jpg" alt="Battle Box deck browser: filters by tier and domain, the Shadow Legion deck expanded with its pilot note and its 22 units shown as card art">
-    <figcaption>The deck browser. Filters by tier and domain, card search, each deck expandable to its pilot note and full list, each card readable at a tap. Generated from the deck JSON, with card art resolved per printing and audited.</figcaption>
+    <figcaption>The deck browser. You can filter by tier and domain, search for a card, expand any deck to its pilot note and full list, and read any card at a tap. The page is generated from the deck JSON, with card art resolved per printing and audited.</figcaption>
   </figure>
 
   <div class="phones">
-    <figure><img src="assets/riftbound-coach.jpg" alt="Coach home on a phone: a progress ring at 0%, one big CONTINUE card with real card art, and the nine-step path below"><figcaption>Coach's home screen: a progress ring, one Continue card, the nine-step path. Step one scores nine percent after five taps.</figcaption></figure>
+    <figure><img src="assets/riftbound-coach.jpg" alt="Coach home on a phone: a progress ring at 0%, one big CONTINUE card with real card art, and the nine-step path below"><figcaption>Coach's home screen has a progress ring, one Continue card and the nine-step path. Step one scores nine percent after five taps.</figcaption></figure>
   </div>
 
   <div class="prose">
     <h2>What is in it</h2>
     <ul>
-      <li><b>Battle Box.</b> 23 deck cores and 18 legend modules; 43 of the game's 46 legends are pickable. Each deck has a tier, a pilot note, a matchup web, and a pull sheet sorted by set and collector number.</li>
-      <li><b>The verifier.</b> One script checks every deck: legality, ownership against a reserved competitive deck, an exclusion list, interaction floors, and rune-pool feasibility. Card names follow the printed card face; an alias table maps pre-release names to printed ones.</li>
-      <li><b>Coach.</b> Eight phone-first views reached only from the path: the turn, paying, five fighting words, combat, six timing words, when to play, moving, scoring, and the rest. Goals are streaks, not totals; sixty random answers produce a best streak of two against targets of four to six.</li>
-      <li><b>Design system.</b> Two typefaces, one gold accent, hairline rules, shared by the deck browser and Coach. Text contrast is measured against the AA threshold for small type.</li>
+      <li>The Battle Box has 23 deck cores and 18 legend modules, which makes 43 of the game's 46 legends pickable. Each deck has a tier, a pilot note, a matchup web and a pull sheet sorted by set and collector number.</li>
+      <li>One script checks every deck for legality, for ownership against a reserved competitive deck, against an exclusion list, and for interaction floors and rune-pool feasibility. Card names follow the printed card face, and an alias table maps pre-release names to printed ones.</li>
+      <li>Coach has eight phone-first views that you reach only from the path: the turn, paying, the fighting words, combat, the timing words, when to play, moving, and scoring. Goals are streaks, because sixty random answers produce a best streak of two against targets of four to six, so the coin-flip drills cannot be passed by luck.</li>
+      <li>The deck browser and Coach share one design system of two typefaces, one gold accent and hairline rules. Text contrast is measured against the AA threshold for small type.</li>
     </ul>
 
     <h2>How it was built</h2>
     <ul>
-      <li><b>The corpus came first.</b> 989 mechanically distinct cards pulled from a community database that served printed text only. All 63 official errata were reconciled by hand, 51 of which the source did not carry. Equipment bonuses were read off card images because no database had them. Every name was matched to the printed card face. The full rules text, 2,479 lines, was read and cited by section for every design decision, and a 557-row collection ledger was joined to the corpus on set and collector number.</li>
-      <li><b>Design ran from the rules, not from card lists.</b> A structural analysis of what the scoring, damage and action economy reward, a read of the owned pool, and a design constitution drawn from the multiplayer-format literature of older card games: tiers anchored to observable properties, an interaction floor, threat-and-answer accounting for every matchup, an enumerated exclusion list.</li>
-      <li><b>Construction is a global allocation problem.</b> Demand per card across all 23 cores, every leader module and a reserved competitive deck must fit the owned counts, and shared table resources must be assignable for every five-deck subset. The verifier checks colour identity, copy caps, leader and signature restrictions, two format ban lists, the exclusion list, interaction floors and every leader-by-package variant. Docs, pull sheets and the card-art browser are generated from one JSON source, and the art cache is audited for right game, right card and right printing.</li>
-      <li><b>Coach is generated and audited.</b> Keyword glosses are extracted from the corpus rather than typed, rules are cited by section, and an audit reads the shipped page, re-derives every drill's premise and answer from the corpus and the rules, and fails the build on any disagreement. The audit was calibrated by corrupting builds. Simulated random guessing never passes; informed play reaches 100%.</li>
+      <li>The corpus came first. I pulled 989 distinct cards from a community database that served printed text only, then reconciled all 63 official errata by hand, most of which the source did not carry. Equipment bonuses had to be read off card images because no database had them, and every name was matched to the printed card face. I read the full rules text and cited it by section for every design decision, and joined a collection ledger to the corpus on set and collector number.</li>
+      <li>The design started from the rules. I worked out what the scoring, damage and action economy actually reward, read the owned pool against that, and wrote a design constitution drawn from the multiplayer literature of older card games. It fixes tiers to observable properties, sets an interaction floor, accounts for threats and answers in every matchup, and enumerates what is excluded.</li>
+      <li>Construction is a global allocation problem. Demand per card across all 23 cores, every leader module and a reserved competitive deck must fit the owned counts, and the shared table resources must be assignable for every five-deck subset. The verifier checks colour identity, copy caps, leader and signature restrictions, two format ban lists, the exclusion list, the interaction floors and every leader-by-package variant. The docs, pull sheets and card-art browser are all generated from one JSON source, and the art cache is audited for the right game, card and printing.</li>
+      <li>Coach is generated and then audited. Keyword glosses come out of the corpus by script, rules are cited by section, and an audit reads the shipped page, re-derives every drill's premise and answer from the corpus and the rules, and fails the build on any disagreement. I calibrated the audit by corrupting builds on purpose. Simulated random guessing never passes, and informed play reaches 100%.</li>
     </ul>
   </div>
 

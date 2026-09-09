@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Courtside — a volleyball match tracker run from the bench · Joshua Matalon</title>
-<meta name="description" content="Courtside tracks score, serve, rotations, a full box score, lineups, subs and scouting on one phone, offline, for a youth volleyball coach. Coaches request changes from inside the app.">
+<title>Courtside, a volleyball match tracker run from the bench · Joshua Matalon</title>
+<meta name="description" content="Courtside keeps score, serve, rotations, a full box score, lineups, subs and scouting on one phone, offline, for a youth volleyball coach. The coach asks for changes from inside the app.">
 <meta property="og:image" content="https://joshuamatalon.github.io/assets/courtside-track.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b0421a'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,Arial' font-size='18' font-weight='700' text-anchor='middle' fill='white'%3EJM%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">
@@ -13,8 +13,8 @@
 <main>
   <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
   <p class="kicker">Phone app · installable, offline · in use since August 2026</p>
-  <h1>Courtside. A match tracker a coach can run with one thumb.</h1>
-  <p class="lede">A volleyball coach on the bench is keeping score, tracking which of six rotations the team is in, counting substitutions against a per-set limit, and trying to remember who just got the kill. Courtside does all of that from one phone, with no signal, and shows the coach where everyone should be standing. <b>Built for a youth club's coaching staff, and they use it.</b></p>
+  <h1>Courtside is a match tracker a coach runs with one thumb.</h1>
+  <p class="lede">A volleyball coach on the bench is keeping score, working out which of six rotations the team is in, counting substitutions against a per-set limit, and trying to remember who just got the kill. Courtside does all of that from one phone with no signal, and it shows the coach where everyone should be standing. <b>I built it for a youth club's coaching staff, and they use it.</b></p>
 
   <div class="facts">
     <div class="fact"><div class="v">1 tap</div><div class="l">per rally: score, serve and rotation all update themselves</div></div>
@@ -24,33 +24,33 @@
   </div>
 
   <div class="phones">
-    <figure><img src="assets/courtside-track.jpg" alt="Track tab: 14–11 in set 3, rotation 6 of 6, they serve; the court diagram shows the six players in zones 1 to 6 with the setter marked; below it, tap a player to log a stat"><figcaption>The Track tab during set three. The two point buttons say what the tap will do to the serve before it happens: "sideout · rotate" or "they hold". The court diagram is the live lineup after every rotation, with the setter ringed and zone one starred. The club and roster shown are demonstration data.</figcaption></figure>
-    <figure><img src="assets/courtside-stats.jpg" alt="Stats tab: a box score with kills, errors, attempts and hitting percentage per player, scoped to set, match or season"><figcaption>The box score builds itself from the taps. Kills, errors, attempts, hitting percentage, aces, serve errors, passes graded 0 to 3, digs, blocks, and a team row. Scope it to the set, the match, the season, or one opponent across the season.</figcaption></figure>
-    <figure><img src="assets/courtside-lineup.jpg" alt="Lineup tab: saved lineups for the season, the 5-1 / 6-2 / 4-2 system choice, the starting six in serving order, and each player's position this match"><figcaption>Lineups are saved for the season and loaded in a tap. The starting six in serving order is what drives the court diagram, so what the coach sees on Track is always the lineup that was actually set.</figcaption></figure>
+    <figure><img src="assets/courtside-track.jpg" alt="Track tab: 14–11 in set 3, rotation 6 of 6, they serve; the court diagram shows the six players in zones 1 to 6 with the setter marked; below it, tap a player to log a stat"><figcaption>The Track tab during set three. The two point buttons say what the tap will do to the serve before it happens, either "sideout · rotate" or "they hold". The court diagram is the live lineup after every rotation, with the setter ringed and zone one starred. The club and roster shown are demonstration data.</figcaption></figure>
+    <figure><img src="assets/courtside-stats.jpg" alt="Stats tab: a box score with kills, errors, attempts and hitting percentage per player, scoped to set, match or season"><figcaption>The box score builds itself from the taps. It shows kills, errors, attempts, hitting percentage, aces, serve errors, graded passes, digs and blocks, with a team row, and you can scope it to the set, the match, the season, or one opponent across the season.</figcaption></figure>
+    <figure><img src="assets/courtside-lineup.jpg" alt="Lineup tab: saved lineups for the season, the 5-1 / 6-2 / 4-2 system choice, the starting six in serving order, and each player's position this match"><figcaption>Lineups are saved for the season and loaded in a tap. The starting six in serving order is what drives the court diagram, so what the coach sees on Track is always the lineup he actually set.</figcaption></figure>
   </div>
 
   <div class="prose">
     <h2>What it does</h2>
     <ul>
-      <li><b>Season.</b> Every match is kept. Starting a new one never touches the last one; switching between them is one tap on the match bar.</li>
-      <li><b>Track.</b> Point US or Point THEM every rally. Sideout scoring is implemented exactly: you rotate only when you win a rally you were not serving. Verified exhaustively for all six rotations.</li>
-      <li><b>Stats.</b> A full box score with the attempts behind every percentage. The pass average is broken into how many passes graded each way, so a 2.4 is not a mystery.</li>
-      <li><b>Lineup and subs.</b> 5-1, 6-2 or 4-2, positions per match, substitutions counted against the limit, and the live lineup updates so the diagram stays truthful.</li>
-      <li><b>Scout.</b> An opponent card per team: key players with tendencies, plus free notes, kept season to season.</li>
-      <li><b>Roster.</b> Names, numbers, positions, and a JSON backup that moves between phones.</li>
+      <li>The Season tab keeps every match. Starting a new one never touches the last one, and switching between them is one tap on the match bar.</li>
+      <li>On Track you tap Point US or Point THEM every rally. Sideout scoring is implemented exactly as the rules have it: you rotate only when you win a rally you were not serving. I verified it for all six rotations.</li>
+      <li>Stats is a full box score with the attempts behind every percentage. The pass average is broken into how many passes graded each way, so a 2.4 is not a mystery.</li>
+      <li>Lineup and Subs hold the system in use, positions for this match, and the substitution count against the limit. The live lineup updates as subs go in, so the diagram stays truthful.</li>
+      <li>Scout keeps an opponent card per team, with key players, their tendencies and free notes, season to season.</li>
+      <li>Roster holds names, numbers and positions, and writes a JSON backup that moves between phones.</li>
     </ul>
 
     <h2>Change requests from inside the app</h2>
-    <p>The coach can ask for a change from inside the app, in his own words. The request becomes a work item, gets built and tested automatically, the app updates itself on his phone, and the reply comes back to the same screen he typed on. Since August the club's coach has commissioned features this way without messaging me once. The most recent one, an opponent scope on the stats table so he can total every match against the same team, shipped on September 6.</p>
+    <p>The coach can ask for a change from inside the app, in his own words. The request becomes a work item, gets built and tested automatically, and the reply comes back to the same screen he typed on, with the app updated on his phone. Since August the club's coach has commissioned features this way without messaging me once. The most recent one, an opponent scope on the stats table so he can total every match against the same team, shipped on September 6. The panel is visible in the public app but does nothing without the coach's access code.</p>
 
     <h2>How it is built</h2>
     <ul>
-      <li>One HTML file, vanilla JavaScript, no framework and no build step. It runs from a static host and installs as a progressive web app on iPhone and Android.</li>
-      <li>Every tap is written synchronously to local storage and mirrored to IndexedDB, so a crash mid-rally loses nothing and a wiped browser store restores from the mirror. Tested by wiping it.</li>
-      <li>The deployed page ships with a generic roster. Real names are typed once on the Roster tab and live only on that phone; a public page never carries a team's players.</li>
-      <li>A browser test suite of one hundred assertions covers the scoring rules, rotation arithmetic, statistics, persistence, and the backup format.</li>
+      <li>It is one HTML file of plain JavaScript, with no framework and no build step. It runs from a static host and installs as a progressive web app on iPhone and Android.</li>
+      <li>Every tap is written to local storage at once and mirrored to IndexedDB, so a crash mid-rally loses nothing and a wiped browser store restores from the mirror. I tested that by wiping it.</li>
+      <li>The deployed page ships with a generic roster. Real names are typed once on the Roster tab and live only on that phone, so a public page never carries a team's players.</li>
+      <li>A browser test suite of one hundred assertions covers the scoring rules, the rotation arithmetic, the statistics, persistence and the backup format.</li>
     </ul>
-    <p class="stack">Shares its whole design system with <a href="passchart.html">Pass Chart</a>: same palette, type scale, spacing and components, so a coach who knows one knows both.</p>
+    <p class="stack">It shares its whole design system with <a href="passchart.html">Pass Chart</a>, down to the palette, type scale and components, so a coach who knows one knows both.</p>
   </div>
 
   <p><a class="cta" href="https://joshuamatalon.github.io/courtside/">Open the live app</a></p>

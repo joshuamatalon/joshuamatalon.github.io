@@ -13,8 +13,8 @@
 <main>
   <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
   <p class="kicker">Web scraping and reporting · Python · in weekly use</p>
-  <h1>Demand scanner. Twenty-six sources, one ranked table, every Monday at seven.</h1>
-  <p class="lede">A scraper that reads job feeds, app stores, asset marketplaces and forum threads, keeps every record with its source, deduplicates by URL, clusters by content, and scores each cluster on how much was posted, what it paid and how crowded it is. The output is one page: a ranked table with example links, a source-health table that says which sources answered and which did not, and the phrases that did not fit any cluster. <b>It runs on a schedule and reports its own failures rather than hiding them.</b></p>
+  <h1>A scraper that reads twenty-six sources and hands me one ranked table every Monday at seven.</h1>
+  <p class="lede">It reads job feeds, app stores, asset marketplaces and forum threads, keeps every record with its source, deduplicates by URL, clusters by content, and scores each cluster on how much was posted, what it paid and how crowded it is. The output is one page. There is a ranked table with example links, a source-health table that says which sources answered and which did not, and the phrases that fitted no cluster. <b>It runs on a schedule and reports its own failures instead of hiding them.</b></p>
 
   <div class="facts">
     <div class="fact"><div class="v">26</div><div class="l">sources configured: a job marketplace, four forum families, two app stores, a creator marketplace, an indie games store</div></div>
@@ -31,14 +31,14 @@
   <div class="prose">
     <h2>How it is built</h2>
     <ul>
-      <li>Each source is one module with one job: fetch and normalise. Supply-side posts, people offering rather than hiring, are filtered by rule per source, and the counts of what was excluded are written to the health file.</li>
-      <li>Every raw record is kept, with its cluster id, in a line-delimited file per run. Deduplication happens after clustering, so the audit trail is complete and the scores are computed on unique listings.</li>
-      <li>Scoring is a weighted sum of demand, price and competition with the weights in a config file that must sum to one; a divide-by-zero guard makes a source with a single record score flat rather than crash.</li>
-      <li>The report is derived from the health file re-read from disk, not from the in-memory run, so what is reported cannot differ from what was saved.</li>
-      <li>A self-test rebuilds the ranked table from a saved raw file through the real scoring code and compares it to the report, to the decimal. It was run by three independent reviewers before the schedule was registered.</li>
-      <li>Scheduled task every Monday at 07:00; the top five rows are pushed to a phone when it finishes.</li>
+      <li>Each source is one module with one job, which is to fetch and normalise. Supply-side posts, from people offering work instead of hiring, are filtered by rule per source, and the counts of what was excluded go into the health file.</li>
+      <li>Every raw record is kept with its cluster id in a line-delimited file per run. Deduplication happens after clustering, so the audit trail is complete and the scores are computed on unique listings.</li>
+      <li>Scoring is a weighted sum of demand, price and competition. The weights live in a config file and must sum to one, and a divide-by-zero guard makes a source with a single record score flat instead of crashing.</li>
+      <li>The report is derived from the health file re-read from disk, never from the in-memory run, so what is reported cannot differ from what was saved.</li>
+      <li>A self-test rebuilds the ranked table from a saved raw file through the real scoring code and compares it to the report, to the decimal. Three independent reviewers ran it before the schedule was registered.</li>
+      <li>A scheduled task runs it every Monday at 07:00 and pushes the top five rows to my phone when it finishes.</li>
     </ul>
-    <p class="stack">This tool runs locally and is not public. The report above is a real run from 8 September 2026 with its own styling; a scraper for a buyer's sources ships with the same audit trail, health table and self-test.</p>
+    <p class="stack">This tool runs locally and is not public. The report above is a real run from 8 September 2026 with its own styling. A scraper for a buyer's sources ships with the same audit trail, health table and self-test.</p>
   </div>
 
   <div class="next"><a href="tempo.html">Next: TEMPO →</a><a href="documents.html">← Documents</a><a href="index.html">All work</a></div>
