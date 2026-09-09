@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sourced research: a county business brief and a checked lead database, every figure traceable · Joshua Matalon</title>
+<meta name="description" content="A two-page brief from a 1.1-million-row Census file with a numbered source on every figure, and a 174-market lead database from a state directory with every phone and website checked live.">
+<meta property="og:image" content="https://joshuamatalon.github.io/assets/brief-p1.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b0421a'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,Arial' font-size='18' font-weight='700' text-anchor='middle' fill='white'%3EJM%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
+  <p class="kicker">Research · public data · two sample deliverables</p>
+  <h1>Sourced research. Every figure carries the file, the filter and the date it was read.</h1>
+  <p class="lede">Two deliverables from public data. A two-page business brief on one county, computed by script from the Census Bureau's 1.1-million-row County Business Patterns file, with a numbered source on every number. And a lead database of every farmers' market in nine Western New York counties from the state's own directory, standardised, with every phone number and website checked live the day it was built. <b>Neither contains a figure that cannot be reproduced from its source line.</b></p>
+
+  <div class="facts">
+    <div class="fact"><div class="v">1.1M</div><div class="l">rows in the source file the brief is computed from; the same script produces the brief for any county</div></div>
+    <div class="fact"><div class="v">6</div><div class="l">numbered sources, each naming the file, the record filter and the access date</div></div>
+    <div class="fact"><div class="v">174</div><div class="l">markets in the lead database, one row each, with the state's published manager, phone and website</div></div>
+    <div class="fact"><div class="v">122</div><div class="l">websites listed and fetched live; 118 answered, 4 did not, and each row says which</div></div>
+  </div>
+
+  <h2>The brief</h2>
+  <div class="two">
+    <figure><img src="assets/brief-p1.jpg" alt="Brief page one: title, a summary box with the county's establishments, employment and payroll, a bar chart of employment by sector, and a section on how to read the numbers"><figcaption>Page one. The summary box carries the three headline figures with footnotes. The chart is one hue with the value at the end of each bar, no gridlines, no legend.</figcaption></figure>
+    <figure><img src="assets/brief-p2.jpg" alt="Brief page two: all twenty sectors ranked by employment with establishments, employees, payroll and pay per employee, a total row, a note on units, and six numbered sources"><figcaption>Page two. Every sector, with units in the column headers rather than on every cell, a total row that the reader can add up, and the sources list that makes any number reproducible.</figcaption></figure>
+  </div>
+  <div class="prose">
+    <ul>
+      <li>The methods section says what the data cannot tell you: counts are establishments not firms, the Bureau adds noise to protect confidentiality, the self-employed are not in the file.</li>
+      <li>Built from the raw download by one script, so a brief for a different county, or all sixty-seven in the state, is a parameter change.</li>
+      <li>Typeset to a written standard: serif text at book measure, a sans-serif for tables and labels, three sizes, one accent.</li>
+    </ul>
+  </div>
+
+  <h2>The lead database</h2>
+  <figure class="figure">
+    <img src="assets/leads-leads.jpg" alt="Leads sheet: 174 markets with address, city, county, ZIP, contact, phone, phone check, website and website check, sorted by county and city">
+    <figcaption>The Leads tab. Every row came from the state's directory through its public API and carries the dataset, the county query and the date. The two check columns say what happened when the phone number was validated and the website was fetched.</figcaption>
+  </figure>
+  <div class="two">
+    <figure><img src="assets/leads-verification.jpg" alt="Verification sheet: counts for rows, duplicates, valid phones, websites listed, reachable, redirected, unreachable, none listed, contacts, and SNAP acceptance"><figcaption>The Verification tab. The counts behind every claim on the About tab, so the reader does not take "checked" on trust.</figcaption></figure>
+    <div class="prose">
+      <ul>
+        <li>Nothing was corrected by hand. A dead site or an odd number stays as published and is flagged in words, with colour as support.</li>
+        <li>Duplicates by name and address are kept and flagged, not removed. The directory had none in these counties, and the sheet says so.</li>
+        <li>Contact names are the market managers the state publishes in its directory. No scraping of social platforms, which their terms forbid.</li>
+        <li>For any other state with an open directory the same script runs against it; for one without, the sourcing is done by hand and each row still gets its citation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p class="stack">Download <a href="samples/chester-county-business-brief.pdf">the brief</a>, <a href="samples/wny_farmers_markets.xlsx">the lead workbook</a> and <a href="samples/wny_farmers_markets.csv">the same list as CSV</a>. Public data: U.S. Census Bureau, County Business Patterns 2023; New York State Department of Agriculture and Markets, Farmers' Markets in New York State.</p>
+  </div>
+
+  <div class="next"><a href="documents.html">Next: documents →</a><a href="register.html">← Consolidation register</a><a href="index.html">All work</a></div>
+</main>
+</body>
+</html>

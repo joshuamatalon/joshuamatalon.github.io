@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consolidation register: four supplier lists merged, duplicates flagged, nothing deleted · Joshua Matalon</title>
+<meta name="description" content="Four supplier lists in four shapes merged into one register. Duplicates grouped and kept, questionable rows logged with the original value, every row traceable to its file and row.">
+<meta property="og:image" content="https://joshuamatalon.github.io/assets/register-register.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b0421a'/%3E%3Ctext x='16' y='22' font-family='Segoe UI,Arial' font-size='18' font-weight='700' text-anchor='middle' fill='white'%3EJM%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <div class="top"><a href="index.html" class="name">← Joshua Matalon</a><a href="mailto:joshuamatalon@gmail.com?subject=Project">Email me the job</a></div>
+  <p class="kicker">Data consolidation · Excel and CSV · sample deliverable</p>
+  <h1>Consolidation register. Four lists become one, and nothing disappears.</h1>
+  <p class="lede">Four departments kept their own supplier lists: two Excel files and two CSV exports, with different column names and orders, four date formats, five phone formats, all-caps company names in one, trailing spaces in another, category codes in a third, and a blank row and a totals line that were never meant to be data. This register merges them into one standard set of columns, keeps every row, and writes down everything it was unsure about. <b>Duplicates are grouped, not deleted. Questionable values are kept as sent and logged.</b></p>
+
+  <div class="facts">
+    <div class="fact"><div class="v">92 → 90</div><div class="l">rows read and rows kept; the two excluded are a blank row and a totals line, both logged</div></div>
+    <div class="fact"><div class="v">27</div><div class="l">duplicate groups found by email, or by company name where email is missing, all members kept</div></div>
+    <div class="fact"><div class="v">10</div><div class="l">questionable rows logged with file, row, field, what is wrong, and the original value</div></div>
+    <div class="fact"><div class="v">1</div><div class="l">step to trace any value back: every row carries its source file and row number</div></div>
+  </div>
+
+  <figure class="figure">
+    <img src="assets/register-register.jpg" alt="Register sheet: company, contact, email, phone, city, category, onboarded, terms, duplicate group, source file and source row, sorted by company">
+    <figcaption>The Register. Phones in one format, dates in one format, terms as a number, categories as names. The Duplicate group column is the accent colour only where a row has one; the Source file and Source row columns are the audit trail.</figcaption>
+  </figure>
+
+  <div class="two">
+    <figure><img src="assets/register-questionable.jpg" alt="Questionable sheet: ten rows with source file, row, field, issue and original value"><figcaption>The Questionable tab. An invalid email, a five-digit phone, an impossible date, missing terms, terms outside policy, three missing emails, and the two non-supplier lines. The register is not changed by this list.</figcaption></figure>
+    <figure><img src="assets/register-duplicates.jpg" alt="Duplicates sheet: every duplicate group with its members side by side, showing where they differ"><figcaption>The Duplicates tab. Every group with its members side by side, so the owner can see that two files disagree on a contact's terms or onboarding date and decide which record survives.</figcaption></figure>
+  </div>
+
+  <div class="prose">
+    <h2>What was standardised</h2>
+    <ul>
+      <li>Column names to one set, from four different vocabularies. Company names from all-caps to title case, with "LLC" and "Inc." kept as written.</li>
+      <li>Phones to one format from five; dates to one from four; payment terms from "Net 30" and "30" to a number; category codes expanded to names; whitespace trimmed.</li>
+    </ul>
+    <h2>What was not done</h2>
+    <ul>
+      <li>No value was corrected by guessing. A phone with five digits stays as sent and is listed. A date that cannot be parsed is left blank and listed with the original text.</li>
+      <li>No duplicate was resolved by the script. Which record wins is the owner's call, so both are shown.</li>
+    </ul>
+    <h2>How it is built</h2>
+    <ul>
+      <li>Five tabs: About, Register, Duplicates, Questionable, Sources. The Sources tab reconciles: rows read equals rows kept plus rows excluded, for every file.</li>
+      <li>The build ends with its own check: it fails if any row is lost, if any planted defect is missed, or if anything but the two junk lines was excluded.</li>
+    </ul>
+    <p class="stack">Download <a href="samples/supplier_register.xlsx">the register</a> and the four source files (<a href="samples/procurement.xlsx">procurement</a>, <a href="samples/accounts_payable.csv">accounts payable</a>, <a href="samples/warehouse_contacts.xlsx">warehouse</a>, <a href="samples/legacy_export.csv">legacy export</a>). Every company, person and number is invented.</p>
+  </div>
+
+  <div class="next"><a href="research.html">Next: sourced research →</a><a href="extraction.html">← PDF to Excel</a><a href="index.html">All work</a></div>
+</main>
+</body>
+</html>
